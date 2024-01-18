@@ -1,0 +1,29 @@
+<table class="table" style="margin-top: 30px">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Contact</th>
+      <th scope="col">Resume</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% applicants.forEach(applicant => { %>
+    <tr>
+      <th scope="row"><%= applicant.applicant_id %></th>
+      <td><%= applicant.name %></td>
+      <td><%= applicant.email %></td>
+      <td><%= applicant.contact %></td>
+      <td>
+        <a
+          href="<%= applicant.resume_path %>"
+          target="_blank"
+          class="btn btn-success d-grid gap-2"
+          >View Resume</a
+        >
+      </td>
+    </tr>
+    <% }) %>
+  </tbody>
+</table>

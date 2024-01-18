@@ -1,0 +1,17 @@
+The API List for the application
+
+Product Controller
+1. Get all products
+2. Add a new product
+3. Get one product
+4. Filter product
+5. Rate the product 
+
+User Controller - Securing the application
+1. Signup - name, email, password, type(customer, seller)
+2. Signin - email, password
+
+Cart Controller
+1. Add items to the cart
+2. Get items of the cart
+3. Remove items from the cart

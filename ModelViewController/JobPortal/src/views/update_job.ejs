@@ -1,0 +1,162 @@
+<h2 class="text-center" style="margin-top: 30px">Post A New Job</h2>
+<form class="col-md-8 offset-md-2" action="/jobs/<%= id %>" method="post">
+  <div class="mb-3 mt-3">
+    <select
+      class="form-select"
+      aria-label="Default select example"
+      name="category"
+    >
+      <option selected>Select Job Category</option>
+      <option value="tech">Tech</option>
+      <option value="non-tech">Non Tech</option>
+    </select>
+  </div>
+  <div class="mb-3 mt-3">
+    <select
+      class="form-select"
+      aria-label="Default select example"
+      name="designation"
+    >
+      <option selected>Select Job Designation</option>
+      <option value="hr" <% if (jobDetails.designation === 'hr') { %>selected<% } %>>HR</option>
+      <option value="sde" <% if (jobDetails.designation === 'sde') { %>selected<% } %>>SDE</option>
+      <option value="devops">DevOps</option>
+      <option value="mern">MERN Developer</option>
+      <option value="mean">MEAN Developer</option>
+      <option value="java">Java Developer</option>
+      <option value="frontend">Frontend Developer</option>
+      <option value="backend">Backend Developer</option>
+      <option value="full-stack">Full Stack Developer</option>
+    </select>
+  </div>
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="location">Job Location</span>
+    <input type="text" class="form-control" id="location" name="location" />
+  </div>
+  <div class="input-group">
+    <span class="input-group-text" id="company">Company Name</span>
+    <input type="text" class="form-control" id="company" name="company_name" />
+  </div>
+  <div class="mb-3 mt-3 d-flex gap-2">
+    <input
+      type="text"
+      class="form-control"
+      id="salary"
+      name="salary"
+      placeholder="Enter Salary"
+    />
+    <div class="input-group">
+      <span class="input-group-text" id="openings">Total Positions</span>
+      <input
+        type="number"
+        class="form-control"
+        id="openings"
+        name="number_of_openings"
+      />
+    </div>
+    <div class="input-group">
+      <span class="input-group-text" id="deadline">Apply By</span>
+      <input type="date" class="form-control" id="deadline" name="apply_by" />
+    </div>
+  </div>
+  <label>Skills Required</label><br />
+  <div
+    class="btn-group mb-3 gap-2"
+    role="group"
+    aria-label="Basic checkbox toggle button group"
+  >
+    <input
+      type="checkbox"
+      class="btn-check"
+      id="react"
+      autocomplete="off"
+      name="skills_required"
+      value="React"
+    />
+    <label class="btn btn-outline-primary" for="react">React</label>
+    <input
+      type="checkbox"
+      class="btn-check"
+      id="node"
+      autocomplete="off"
+      name="skills_required"
+      value="NodeJs"
+    />
+    <label class="btn btn-outline-primary" for="node">NodeJs</label>
+    <input
+      type="checkbox"
+      class="btn-check"
+      id="angular"
+      autocomplete="off"
+      name="skills_required"
+      value="Angular"
+    />
+    <label class="btn btn-outline-primary" for="angular">Angular</label>
+    <input
+      type="checkbox"
+      class="btn-check"
+      id="mongodb"
+      autocomplete="off"
+      name="skills_required"
+      value="MongoDB"
+    />
+    <label class="btn btn-outline-primary" for="mongodb">MongoDB</label>
+    <input
+      type="checkbox"
+      class="btn-check"
+      id="sql"
+      autocomplete="off"
+      name="skills_required"
+      value="SQL"
+    />
+    <label class="btn btn-outline-primary" for="sql">SQL</label>
+    <input
+      type="checkbox"
+      class="btn-check"
+      id="express"
+      autocomplete="off"
+      name="skills_required"
+      value="Express"
+    />
+    <label class="btn btn-outline-primary" for="express">Express</label>
+    <input
+      type="checkbox"
+      class="btn-check"
+      id="java"
+      autocomplete="off"
+      name="skills_required"
+      value="Java"
+    />
+    <label class="btn btn-outline-primary" for="java">Java</label>
+    <input
+      type="checkbox"
+      class="btn-check"
+      id="spring"
+      autocomplete="off"
+      name="skills_required"
+      value="Spring"
+    />
+    <label class="btn btn-outline-primary" for="spring">Spring</label>
+    <input
+      type="checkbox"
+      class="btn-check"
+      id="cplusplus"
+      autocomplete="off"
+      name="skills_required"
+      value="C++"
+    />
+    <label class="btn btn-outline-primary" for="cplusplus">C++</label>
+    <input
+      type="checkbox"
+      class="btn-check"
+      id="dsa"
+      autocomplete="off"
+      name="skills_required"
+      value="DSA"
+    />
+    <label class="btn btn-outline-primary" for="dsa">DSA</label>
+  </div>
+  <div class="d-grid gap-2">
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
+</form>

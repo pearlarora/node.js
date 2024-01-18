@@ -1,0 +1,29 @@
+<!-- For recruiters to create, update, delete and view their job postings -->
+
+<div class="container" style="margin-top: 30px">
+  <div class="row row-gap-3">
+    <% jobs.forEach(job => { %>
+    <div class="col-lg-4 col-md-6 col-sm-6">
+      <div class="card" style="width: 18rem">
+        <div class="card-body">
+          <h3 class="card-title"><%= job.company_name %></h3>
+          <h5 class="card-text"><%= job.designation %></h5>
+          <p class="card-text"><%= job.category %></p>
+          <i class="bi bi-geo-alt-fill"><%= job.location %></i>
+          <p class="card-text"><%= job.salary %></p>
+          <div style="margin-bottom: 10px">
+            <% job.skills_required.forEach(skill => { %>
+            <button type="button" class="btn btn-outline-primary btn-sm mb-1">
+              <%= skill %>
+            </button>
+            <% }) %>
+          </div>
+          <a href="/jobs/<%= job.id %>" class="btn btn-success d-grid gap-2"
+            >View Details</a
+          >
+        </div>
+      </div>
+    </div>
+    <% }) %>
+  </div>
+</div>

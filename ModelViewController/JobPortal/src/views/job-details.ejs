@@ -1,0 +1,58 @@
+<!-- For jobseekers to view details of a job -->
+
+<div class="card" style="margin-top: 30px">
+  <h5 class="card-header text-center">
+    <%= jobDetails.designation %> opportunity in <%= jobDetails.location %> at
+    <%= jobDetails.company_name %>
+  </h5>
+  <div class="card-body">
+    <div class="d-flex align-items-center">
+      <h2 class="card-title"><%= jobDetails.company_name %></h2>
+      <% if(locals.userEmail) { %>
+      <div class="recruiter-icons" style="margin-left: 30px">
+        <div href="/jobs/<%= id %>/update">
+          <i class="bi bi-pencil-square" style="margin-right: 5px; color: blue">
+            Update</i
+          >
+        </div>
+        <div href="/jobs/<%= id %>/delete">
+          <i class="bi bi-trash3" style="color: red"> Delete</i>
+        </div>
+      </div>
+      <% } %>
+    </div>
+    <h5 class="card-text"><% jobDetails.designation %></h5>
+    <br />
+    <div class="d-flex justify-content-around">
+      <i class="bi bi-geo-alt-fill"> <%= jobDetails.location %></i>
+      <i class="bi bi-currency-rupee"> <%= jobDetails.salary %></i>
+      <i class="bi bi-calendar-event"> <%= jobDetails.apply_by %></i>
+      <i class="bi bi-bar-chart-fill">
+        Number of Openings <%= jobDetails.number_of_openings %></i
+      >
+      <% if(locals.userEmail) { %>
+      <a href="/jobs/<%= id %>/applicants">
+        <i class="bi bi-people-fill" style="color: red">
+          Applicants <%= jobDetails.applicants.length %></i
+        ></a
+      >
+      <% } else { %>
+      <i class="bi bi-people-fill" style="color: red">
+        Applicants <%= jobDetails.applicants.length %></i
+      >
+      <% } %>
+    </div>
+    <br />
+
+    <a href="/jobs/<%= id %>/apply" class="btn btn-primary">Apply Now</a>
+
+    <br />
+    <button
+      type="button"
+      class="btn btn-success btn-sm"
+      style="margin-top: 15px"
+    >
+      Posted: <%= jobDetails.posted_on %>
+    </button>
+  </div>
+</div>

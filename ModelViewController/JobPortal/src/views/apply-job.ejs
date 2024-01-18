@@ -1,0 +1,40 @@
+<% if(errors) { %>
+<div class="alert alert-danger" role="alert">
+  <ul>
+    <% errors.forEach(error => { %>
+    <li><%= error.msg %></li>
+    <% }) %>
+  </ul>
+</div>
+<% }%>
+<div class="col-md-6 offset-md-3" style="margin-top: 30px">
+  <form
+    action="/jobs/<%= id %>/apply"
+    method="post"
+    enctype="multipart/form-data"
+  >
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="name">Name</span>
+      <input type="text" class="form-control" id="name" name="name" />
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="email">Email</span>
+      <input type="email" class="form-control" id="email" name="email" />
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="password">Password</span>
+      <input
+        type="password"
+        class="form-control"
+        id="password"
+        name="password"
+      />
+    </div>
+    <div class="mb-3 form-check">
+      <input type="file" name="resume_path" id="resume_path" accept=".pdf" />
+    </div>
+    <div class="d-grid gap-2">
+      <button type="submit" class="btn btn-success">Submit</button>
+    </div>
+  </form>
+</div>
