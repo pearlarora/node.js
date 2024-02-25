@@ -1,0 +1,67 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "description": "API for E-commerce website",
+    "title": "E-commerce API"
+  },
+  "host": "localhost:3100",
+  "securityDefinitions": {
+    "JWT": {
+      "in": "header",
+      "name": "authorization",
+      "type": "apiKey"
+    }
+  },
+  "paths": {
+    "/api/user/signin": {
+      "post": {
+        "tags": ["User"],
+        "summary": "Login",
+        "description": "User login to get jwt token",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "User Credentials",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string"
+                },
+                "password": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Incorrect Credentials"
+          }
+        }
+      }
+    },
+    "/api/product": {
+      "get": {
+        "tags": ["Product"],
+        "summary": "Get Products",
+        "description": "Get All Products API",
+        "security": [{ "JWT": {} }],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    }
+  }
+}

@@ -11,9 +11,12 @@ const jwtAuth = (req, res, next) => {
 
   // 3. If token is present then check if it is valid or not - using jsonwebtoken library
   try {
-    const payload = jwt.verify(token, "OJMaHa8AbJFmXZ7q5vyTbUUVBllTOZHT");
+    const payload = jwt.verify(token, process.env.JWT_SECRET);
     // This is the same key that was used to generate the token
-    console.log(payload);
+    console.log("payload", payload);
+
+    // We can attach this user id from the payload to the request object
+    req.userId = payload.userId;
   } catch (err) {
     // 4. If token is not valid then return error
 
