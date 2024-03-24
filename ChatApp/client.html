@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat App</title>
+  </head>
+  <body>
+    <div>
+      <div id="message-list">
+        <!-- here is the chat list -->
+      </div>
+      <input type="text" id="message-input" />
+      <button id="send-message">Send</button>
+    </div>
+
+    <script src="http://localhost:3000/socket.io/socket.io.js"></script>
+    <script>
+      // Socket code in JS
+      const socket = io.connect("http://localhost:3000");
+
+      // Emit the username to the server
+      const username = prompt("Enter your name");
+      socket.emit("join", username);
+
+      // On click of the button to send a message, we need to read the message and send it to the server
+      // 1. Get the elements
+      const messageInput = document.getElementById("message-input");
+      const messageList = document.getElementById("message-list");
+      const sendButton = document.getElementById("send-message");
+
+      // 2. Use event listener to read the message from the input and send it to the server
+      sendButton.addEventListener("click", function () {
+        const message = messageInput.value;
+        if (message) {
+          // Emit the event when a message is received
+          socket.emit("new-message", message);
+          // Add the message to the message list
+          const messageElement = document.createElement("div");
+          messageElement.innerText = username + " : " + message;
+          messageList.appendChild(messageElement);
+          // Set value of the message input box to empty when the message is sent
+          messageInput.value = "";
+        }
+      });
+
+      // Listen for the broadcast event, and add it to the list
+      socket.on("broadcast-message", (userMessage) => {
+        const messageElement = document.createElement("div");
+        messageElement.innerText =
+          userMessage.username + " : " + userMessage.message;
+        messageList.appendChild(messageElement);
+      });
+    </script>
+  </body>
+</html>

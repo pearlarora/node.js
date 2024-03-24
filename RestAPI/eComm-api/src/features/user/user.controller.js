@@ -8,6 +8,18 @@ export default class UserController {
     this.userRepository = new UserRepository();
   }
 
+  async resetPassword(req, res) {
+    const { newPassword } = req.body;
+    const hashedPassword = await bcrypt.hash(newPassword, 12);
+    const userId = req.userId;
+    try {
+      await this.userRepository.resetPassword(userId, hashedPassword);
+      return res.status(200).send("Password is updated successfully");
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   async signUp(req, res) {
     const { name, email, password, type } = req.body;
     try {
